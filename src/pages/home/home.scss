@@ -1,0 +1,48 @@
+page-home {
+    #homeConteudo{
+        background:#f2f2f2;
+    }
+  
+    .item-md.item-block .item-inner {
+        padding:0;
+        border:none;
+    }
+
+    .iconEuroSymbol{
+        font-size: 14px;
+        padding-top: 7px;
+    }
+
+    #trasacoesWrapper{
+        width: 100%;
+        height:42vh;
+        margin-bottom:15px;
+        overflow:hidden;
+    }
+
+    #transacaoTitle{
+        color:white;
+        background:green;
+        font-family: Calibri;
+        padding:10px;
+    }
+
+    #transacaoTitle > h5 {
+        margin:0
+    }
+
+    #adicionaBtnWrapper{
+        width:20%;
+        height:auto;
+        margin-left:40%;
+        margin-right:40%;
+    }
+
+    #adicionaBtn{
+        border-radius:50px;
+        background:green;
+        color:white;
+        padding:35px;
+    }
+    
+}

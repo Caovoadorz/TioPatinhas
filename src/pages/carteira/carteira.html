@@ -1,0 +1,54 @@
+<!--
+  Generated template for the CarteiraPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  
+  <ion-navbar>
+    <ion-title>{{'Todas as Carteiras'}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div>
+    <h4>Selecione uma carteira</h4>
+  </div>
+  <div>
+    <ion-list>
+      <ion-item *ngFor="let carteira of listaCarteira" (click)="selectCarteira(carteira)">
+        <h4>{{carteira.nome}}</h4>
+        <p>{{carteira.accountbalance}}</p>
+        <p item-end>{{carteira.totalDigital}}</p>
+        <p item-end>{{carteira.totalFisico}}</p>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div>
+    <h4>Adicione uma Carteira</h4>
+    <ion-item>
+      <ion-label>Nome da Carteira</ion-label>
+      <ion-input type="text" [(ngModel)]="nomeCarteira"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Total digital</ion-label>
+      <ion-input type="number" [(ngModel)]="totalDigital"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Total fisico</ion-label>
+      <ion-input type="number" [(ngModel)]="totalFisico"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Descricao</ion-label>
+      <ion-textarea [(ngModel)]="descricaoCarteira"></ion-textarea>
+    </ion-item>
+    <button ion-button (click)="addCarteira()">Submit</button>
+  </div>
+  <div>
+    <button ion-button (click)="showCategorias()">Categorias</button>
+  </div>
+</ion-content>

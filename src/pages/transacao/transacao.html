@@ -1,0 +1,82 @@
+<!--
+  Generated template for the TransacaoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Nova Transacao</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div>
+    <ion-segment [(ngModel)]="tipoTransacaoSelected">
+      <ion-segment-button value="{{tt.id}}" *ngFor="let tt of tipoTransacao">
+        {{tt.nome}}
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  <div id="inserTransacaoWrapper">
+      <div>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-3></ion-col>
+            <ion-col col-5>
+              <ion-input id="numberInput" placeholder="0.00" type="number" [(ngModel)]="valorTransacao" (ionChange)="verificaTotal()"></ion-input>
+            </ion-col>
+            <ion-col col-1 id="coinSymbol">
+                <ion-icon name="logo-euro" item-end></ion-icon>
+            </ion-col>
+            <ion-col col-3></ion-col>
+          </ion-row>
+        </ion-grid>    
+      </div>
+      <div *ngIf="tipoTransacaoSelected != 1">
+        <ion-item>
+          <ion-label>Selecciona uma Categoria</ion-label>
+          <ion-select [(ngModel)]="categoriaSelected">
+            <ion-option value="{{categoria.id}}" *ngFor="let categoria of categoriasList">
+              {{categoria.nome}}
+            </ion-option>
+          </ion-select>
+        </ion-item>
+      </div>
+      <div>
+        <ion-item>
+          <ion-label>Debitar de</ion-label>
+          <ion-select [(ngModel)]="totalSelected">
+            <ion-option value="{{total.id}}" *ngFor="let total of totaisCarteira">
+              {{total.nome}}
+            </ion-option>
+          </ion-select>
+        </ion-item>
+      </div>
+      <!-- <div>
+        <ion-label>Selecciona uma Categoria</ion-label>
+        <ion-select [(ngModel)]="categoriaSelected">
+          <ion-option value="{{categoria.id}}" *ngFor="let categoria of categoriasList">
+            {{categoria.nome}}
+          </ion-option>
+        </ion-select>
+      </div>    -->
+      <div>
+        <ion-item>
+          <ion-label>Data da transação</ion-label>
+          <ion-datetime displayFormat="DD MMM YYYY" [(ngModel)]="dataEscolhida"></ion-datetime>
+        </ion-item>
+      </div>
+    </div>
+    <div>
+      <ion-item>
+        <ion-textarea placeholder="Digite uma descrição para a transação" [(ngModel)]="transacaoObject.descricao"></ion-textarea>
+      </ion-item>
+    </div>
+    <div>
+      <button ion-button full (click)="guardarTransacao()">Guardar Transacao</button>
+    </div>
+</ion-content>

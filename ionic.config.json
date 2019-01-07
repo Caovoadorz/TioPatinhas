@@ -1,0 +1,7 @@
+{
+  "name": "TioPatinhasAPP",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      About
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div>
+    <ion-select [(ngModel)]="endpointSelected" (ionChange)="setEndPoint()">
+      <ion-option value="localhost">Localhost</ion-option>
+      <ion-option value="prod">Produção</ion-option>
+    </ion-select>
+  </div>
+    <span>EndPoint: {{endpoint}}</span>
+  <div>
+
+  </div>
+</ion-content>
