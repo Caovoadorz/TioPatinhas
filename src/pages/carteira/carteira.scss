@@ -1,3 +1,39 @@
 page-carteira {
+    .headerAddIcon{
+        text-align: center;
+        font-size: 20px;
+        color: gold;
+    }
 
+    .alert-md .alert-button {
+        margin:0 17px 0 0;
+    }
+}
+
+.successToast{
+    .toast-message {
+        background:green;
+        color:white;
+        text-align:center;
+    } 
+}
+
+.errorToast{
+    .toast-message {
+        background:red;
+        color:white; 
+        text-align:center;
+    } 
+}
+
+.addCarteiraAlert{
+    .alert-button{
+        margin:0 17px 0 0;
+        background:darkgreen;
+        color:white;
+    }
+
+    .alert-head {
+        text-align:center!important
+    }
 }

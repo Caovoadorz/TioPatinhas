@@ -44,5 +44,14 @@ page-home {
         color:white;
         padding:35px;
     }
+
+    .headerIconsHome{
+        text-align:right;
+    }    
+
+    .headerIconsHome > img {
+        width:25px;
+        height:25px;
+    }
     
 }

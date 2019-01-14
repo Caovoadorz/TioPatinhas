@@ -2,11 +2,18 @@
   <ion-navbar>
     <ion-grid>
       <ion-row>
-        <ion-col col-8>
-          <ion-title>{{'carteiraNome' || 'Dashboard'}}</ion-title>
+        <ion-col col-1></ion-col>
+        <ion-col col-9>
+          <ion-title>{{carteiraNome || 'Dashboard'}}</ion-title>
         </ion-col>
-        <ion-col col-4>
-          <ion-icon name="add" (click)="presentAlertAdicionarCarteira()"></ion-icon>
+        <ion-col col-2 class="headerIconsHome">
+            <!-- <ion-select [hidden]="true" [(ngModel)]="optionSelected"  interface="popover" (ionChange)="doOptionSelected()">
+              <ion-option value="option.pageUrl" *ngFor="let option of menuOptions">
+                <img src="{{option.icon}}"/>
+                {{option.nome}}
+              </ion-option>
+            </ion-select> -->
+            <img src="../../assets/icon/3dotsmenu.svg" (click)="presentPopover($event)">   
         </ion-col>
       </ion-row>
     </ion-grid>

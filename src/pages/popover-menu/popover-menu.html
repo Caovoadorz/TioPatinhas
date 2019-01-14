@@ -1,0 +1,14 @@
+<!--
+  Generated template for the PopoverMenuPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let option of menuOptions" (click)="close(option.id)">
+      <img src="{{option.icon}}">
+      <span>{{option.nome}}</span>
+    </ion-item>
+  </ion-list>
+</ion-content>

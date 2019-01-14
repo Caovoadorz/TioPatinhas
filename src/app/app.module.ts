@@ -18,6 +18,7 @@ import { CategoriasPage } from '../pages/categorias/categorias';
 import { TransacaoProvider } from '../providers/transacao/transacao';
 import { CarteiraPage } from '../pages/carteira/carteira';
 import { TransacaoPage } from '../pages/transacao/transacao';
+import { PopoverMenuPage } from '../pages/popover-menu/popover-menu';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { TransacaoPage } from '../pages/transacao/transacao';
     TabsPage,
     CategoriasPage,
     CarteiraPage,
-    TransacaoPage
+    TransacaoPage,
+    PopoverMenuPage
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,8 @@ import { TransacaoPage } from '../pages/transacao/transacao';
     TabsPage,
     CategoriasPage,
     CarteiraPage,
-    TransacaoPage
+    TransacaoPage,
+    PopoverMenuPage
   ],
   providers: [
     StatusBar,

@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
-import { NavController, DateTime, NavParams, ModalController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, DateTime, NavParams, ModalController, Select, PopoverController } from 'ionic-angular';
 import { CarteiraProvider } from '../../providers/carteira/carteira';
 import { CategoriasProvider } from '../../providers/categorias/categorias';
 import { CarteiraPage } from '../carteira/carteira';
 import { DadosGeraisProvider } from '../../providers/dados-gerais/dados-gerais';
 import { TransacaoProvider } from '../../providers/transacao/transacao';
 import { TransacaoPage } from '../transacao/transacao';
+import { PopoverMenuPage } from '../popover-menu/popover-menu';
 
 
 @Component({
@@ -13,6 +14,8 @@ import { TransacaoPage } from '../transacao/transacao';
   templateUrl: 'home.html'
 })
 export class HomePage {
+
+  @ViewChild(Select) select: Select;
 
   hasCarteira:boolean = false;
   transacaoList:any=[];
@@ -22,9 +25,13 @@ export class HomePage {
   accountBalance:any;
   carteiraNome:any;
 
+  optionSelected:any = 0;
 
-  constructor(public navCtrl: NavController,private navParams:NavParams,private carteiraProvider:CarteiraProvider,private categoriaProvider:CategoriasProvider,private dadosGeraisProvider:DadosGeraisProvider,private transacaoProvider:TransacaoProvider,private modalCtrl:ModalController) {
-    if(this.dadosGeraisProvider.getCarteiraEmUso() == 0){
+
+
+
+  constructor(public navCtrl: NavController,private navParams:NavParams,private carteiraProvider:CarteiraProvider,private categoriaProvider:CategoriasProvider,private dadosGeraisProvider:DadosGeraisProvider,private transacaoProvider:TransacaoProvider,private modalCtrl:ModalController,private popoverCtrl:PopoverController) {
+    if(this.dadosGeraisProvider.getidCarteiraEmUso() == 0){
       console.log("dados gerais no inicio",this.dadosGeraisProvider.getCarteiraEmUso());
       this.presentModalCarteiras();
     } 
@@ -32,6 +39,24 @@ export class HomePage {
 
   ionViewDidEnter(){
     
+  }
+
+  presentPopover(myEvent) {
+    console.log("evento",myEvent)
+    let popover = this.popoverCtrl.create(PopoverMenuPage);
+    popover.present({
+      ev: myEvent
+    });
+
+    popover.onDidDismiss(result=>{
+      console.log("resultado",result);
+      switch(result){
+        case 1 : this.navCtrl.push(CarteiraPage)
+                break;
+        default:""
+      }
+       
+    })
   }
 
   loadTransacoes(idCarteira){
@@ -44,7 +69,7 @@ export class HomePage {
   loadCarteira(){
     this.carteiraEmUso=this.dadosGeraisProvider.getCarteiraEmUso();
     console.log("Carteira em uso",this.carteiraEmUso);
-    this.carteiraNome = this.carteiraEmUso.carteiraNome;
+    this.carteiraNome = this.carteiraEmUso.nome;
     this.totalDigital=this.carteiraEmUso.totalDigital;
     this.totalFisico=this.carteiraEmUso.totalFisico;
     this.accountBalance=this.carteiraEmUso.accountbalance;
