@@ -19,6 +19,8 @@ import { TransacaoProvider } from '../providers/transacao/transacao';
 import { CarteiraPage } from '../pages/carteira/carteira';
 import { TransacaoPage } from '../pages/transacao/transacao';
 import { PopoverMenuPage } from '../pages/popover-menu/popover-menu';
+import { LoginProvider } from '../providers/login/login';
+import { LoginPage } from '../pages/login/login';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { PopoverMenuPage } from '../pages/popover-menu/popover-menu';
     CategoriasPage,
     CarteiraPage,
     TransacaoPage,
-    PopoverMenuPage
+    PopoverMenuPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,8 @@ import { PopoverMenuPage } from '../pages/popover-menu/popover-menu';
     CategoriasPage,
     CarteiraPage,
     TransacaoPage,
-    PopoverMenuPage
+    PopoverMenuPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
@@ -56,7 +60,8 @@ import { PopoverMenuPage } from '../pages/popover-menu/popover-menu';
     CategoriasProvider,
     DadosGeraisProvider,
     CarteiraProvider,
-    TransacaoProvider
+    TransacaoProvider,
+    LoginProvider
   ]
 })
 export class AppModule {}

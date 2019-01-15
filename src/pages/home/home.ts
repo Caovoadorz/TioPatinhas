@@ -7,6 +7,7 @@ import { DadosGeraisProvider } from '../../providers/dados-gerais/dados-gerais';
 import { TransacaoProvider } from '../../providers/transacao/transacao';
 import { TransacaoPage } from '../transacao/transacao';
 import { PopoverMenuPage } from '../popover-menu/popover-menu';
+import { LoginPage } from '../login/login';
 
 
 @Component({
@@ -31,10 +32,16 @@ export class HomePage {
 
 
   constructor(public navCtrl: NavController,private navParams:NavParams,private carteiraProvider:CarteiraProvider,private categoriaProvider:CategoriasProvider,private dadosGeraisProvider:DadosGeraisProvider,private transacaoProvider:TransacaoProvider,private modalCtrl:ModalController,private popoverCtrl:PopoverController) {
-    if(this.dadosGeraisProvider.getidCarteiraEmUso() == 0){
-      console.log("dados gerais no inicio",this.dadosGeraisProvider.getCarteiraEmUso());
-      this.presentModalCarteiras();
-    } 
+    console.log("tenho login",dadosGeraisProvider.haveLoggedIn())
+    if(dadosGeraisProvider.haveLoggedIn()){
+      if(this.dadosGeraisProvider.getidCarteiraEmUso() == 0){
+        console.log("dados gerais no inicio",this.dadosGeraisProvider.getCarteiraEmUso());
+        this.presentModalCarteiras();
+      }
+    }
+    else{
+      this.presentModalLogin();
+    }
   }
 
   ionViewDidEnter(){
@@ -78,6 +85,17 @@ export class HomePage {
 
   novaTransacao(){
     this.navCtrl.push(TransacaoPage,this.totalFisico);
+  }
+
+  presentModalLogin(){
+    const modal = this.modalCtrl.create(LoginPage);
+    modal.present();
+    modal.onDidDismiss(()=>{
+      if(this.dadosGeraisProvider.getidCarteiraEmUso() == 0){
+        console.log("dados gerais no inicio",this.dadosGeraisProvider.getCarteiraEmUso());
+        this.presentModalCarteiras();
+      }
+    })
   }
 
   presentModalCarteiras(){

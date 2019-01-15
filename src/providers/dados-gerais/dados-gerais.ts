@@ -13,6 +13,7 @@ export class DadosGeraisProvider {
   constructor(public http: HttpClient) {
     console.log('Hello DadosGeraisProvider Provider');
     console.log(this.urlEnv['localhost']);
+    localStorage.setItem('currentUser', JSON.stringify({ token:null, username: null}));
   }
 //****************************************************ENPOINT */
   urlEnv = {
@@ -60,4 +61,37 @@ export class DadosGeraisProvider {
   getidCarteiraEmUso(){
     return this.idCarteiraEmUso;
   }
+//****************************************LOGIN ***********************************************/
+
+  token: string;
+  token_type: string;
+  expires_seconds:number;
+  username:string;
+  emited_date:Date;
+  expires_date:Date;
+
+  isLoggedIn:boolean=false;
+
+  public setLoginModel(resposta):void{
+      this.token= resposta.access_token;
+      this.token_type=resposta.token_type;
+      this.expires_seconds=resposta.expires_in;
+      this.username=resposta.userName;
+
+      localStorage.setItem('currentUser', JSON.stringify({ token: this.token, username: this.username}));
+  }
+
+  public haveLoggedIn(){
+    let currentUser = JSON.parse(localStorage.getItem("currentUser")); 
+    console.log("current user carregado",currentUser);
+    if(currentUser.token != "" && currentUser.token !=null) return this.isLoggedIn = true;
+    else return false;
+  }
+
+  public getUser(){
+    let currentUser = JSON.parse(localStorage.getItem("currentUser")); 
+    return currentUser;
+  }
+  
+
 }
